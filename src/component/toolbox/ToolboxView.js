@@ -39,6 +39,8 @@ export default echarts.extendComponentView({
         }
 
         var itemSize = +toolboxModel.get('itemSize');
+        var itemWidth = toolboxModel.get('itemWidth') || itemSize;
+        var itemHeight = toolboxModel.get('itemHeight') || itemSize;
         var featureOpts = toolboxModel.get('feature') || {};
         var features = this._features || (this._features = {});
 
@@ -148,10 +150,10 @@ export default echarts.extendComponentView({
                     iconStr,
                     {},
                     {
-                        x: -itemSize / 2,
-                        y: -itemSize / 2,
-                        width: itemSize,
-                        height: itemSize
+                        x: -itemWidth / 2,
+                        y: -itemHeight / 2,
+                        width: itemWidth,
+                        height: itemHeight
                     }
                 );
                 path.setStyle(iconStyleModel.getItemStyle());
@@ -203,14 +205,14 @@ export default echarts.extendComponentView({
                     titleText, textContain.makeFont(hoverStyle)
                 );
                 var offsetX = icon.position[0] + group.position[0];
-                var offsetY = icon.position[1] + group.position[1] + itemSize;
+                var offsetY = icon.position[1] + group.position[1] + itemHeight;
 
                 var needPutOnTop = false;
                 if (offsetY + rect.height > api.getHeight()) {
                     hoverStyle.textPosition = 'top';
                     needPutOnTop = true;
                 }
-                var topOffset = needPutOnTop ? (-5 - rect.height) : (itemSize + 8);
+                var topOffset = needPutOnTop ? (-5 - rect.height) : (itemHeight + 8);
                 if (offsetX + rect.width /  2 > api.getWidth()) {
                     hoverStyle.textPosition = ['100%', topOffset];
                     hoverStyle.textAlign = 'right';

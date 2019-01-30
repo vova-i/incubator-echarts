@@ -68,6 +68,10 @@ var ToolboxModel = echarts.extendComponentModel({
 
         itemSize: 15,
 
+        itemWidth: 0,
+
+        itemHeight: 0,
+
         itemGap: 8,
 
         showTitle: true,
